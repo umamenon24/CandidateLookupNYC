@@ -1,0 +1,154 @@
+<html>
+<head>
+  <title>Candidate {{candidate}}</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+
+  {% include 'nav.html' %}
+  
+
+</head>
+<body>
+  <h1>{{candidates[candidate]}}</h1>
+  <br/>
+
+  <div class="panel panel-default" style="float: left;">
+    <!-- Default panel contents -->
+    <div class="panel-heading"><img class="rounded-circle" alt="avatar1" style="width: 175px; height: 175px;" src="{{data[candidate]['image']}}" /></div>
+    
+
+    <!-- List group -->
+    <ul class="list-group">
+      <div class="panel panel-success">
+        <div class="panel-heading" style="text-align: center;">{{ic}}</div>
+      </div>
+      <div class="panel panel-warning">
+        <div class="panel-heading" style="text-align: center;">District {{disty}}</div>
+      </div>
+      <div class="panel panel-success">
+        <div class="panel-heading" style="text-align: center;">{{att1[1][19:]}}</div>
+      </div>
+      {% if att1[2] != "Core platform: " %}
+        <div class="panel panel-warning">
+          <div class="panel-heading" style="text-align: center;">{{att1[2]}}</div>
+        </div>
+      {% else %}
+        <div class="panel panel-warning">
+          <div class="panel-heading" style="text-align: center;">{{att1[2]}} n/a</div>
+        </div>
+      {% endif %}
+      <div class="panel panel-success">
+        <div class="panel-heading" style="text-align: left;">Visit {{candidates[candidate]}}'s website:
+          {% if data[candidate]['website'] != "" %}
+            <a class="btn btn-light" href="{{data[candidate]['website']}}" role="button" id="web">{{data[candidate]['website']}}</a>
+          {% else %}
+            <button type="button" style="text-align:center;" class="btn btn-dark" id="web" disabled>No website</button>
+          {% endif %}
+        
+        
+        </div>
+      </div>
+
+      
+    </ul>
+  
+  </div>
+
+</br>
+
+<div class="panel panel-primary" style="float: right;">
+  
+  
+    <div id="dem1o1" class="collapse">
+     <p>policy history here</p>
+    </div>
+</div> 
+
+<div class="panel panel-primary" style="float: right;">
+  
+  <div class="panel-heading"> District Information
+    <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#dem1o">View/Hide Map</button>
+
+  </div>
+  
+    <div id="dem1o" class="collapse">
+      {% include 'districts1.svg' %}
+    </div>
+</div> 
+
+
+<div class="panel panel-primary" style="float: right;">
+  
+  <div class="panel-heading">Endorsements ({{(data[candidate]['endorsements'])|length}})
+    <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#demo">View/Hide all</button>
+  </div>
+  
+    <div id="demo" class="collapse">
+      <ul class="list-group" >
+        {% for elem in data[candidate]['endorsements'] %}
+          <li class="list-group-item">{{elem}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+
+
+
+<!-- div class panel panel scucess -->
+
+<p>
+
+ 
+    
+
+ 
+  
+  <rect x1="100" y1="100" x2="200" y2="200"> </rect>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  
+
+
+</body>
+
+<style>
+  body{
+    background-color: #c3e9f7;
+    /* color: #1c305c; */
+  }
+
+  #web:hover{
+    color:#ffffff
+  }
+
+  {% for i in range(1,52) %}
+    .d{{i}}{
+      fill: #ced4da
+    }
+    .a{{i}}{
+      fill: #495057
+    }
+  {% endfor %}
+
+  .d{{disty}} {
+    fill: #198754
+  }
+
+  .a{{disty}} {
+    fill: #ffffff
+  }
+  
+</style>
+<script>
+ 
+  // for(let i=0; i<data[candidate]['endorsements'].length; i++){
+  //   var option = "<li class='list-group-item'>" + data[candidate]['endorsements'][i] + "</li>"
+  //   document.getElementById('endorsementlist').innerHTML += option;
+  // }
+ 
+</script>
+</html>

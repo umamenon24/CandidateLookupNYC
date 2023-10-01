@@ -1,0 +1,222 @@
+<html>
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  {% include 'nav.html' %}
+  <title>Lookup - Main</title>
+
+</head>
+<body>
+  <h1>Candidate Lookup NYC</h1>
+  <!-- <h3 style="text-align: right;"> Candidates you could support:</h3> -->
+
+
+
+  
+</br>
+<div style="float: right;">{% include 'districts1.svg' %}
+</div>
+
+  <div style="float: left;">
+    <form action="" onsubmit="returnChoices()">
+      <label for="dist">City Council District</label>
+        <select name="dist" id="dist_select" class="filter">
+        </select>
+      <label for="party">Party</label>
+        <select name="party" id="party_select" class="filter">
+          <option value="No preference" class="filter">No preference</option>
+          <option value="Democratic" class="filter">Democratic</option>
+          <option value="Republican" class="filter">Republican</option>
+          <option value="Conservative" class="filter">Conservative</option>
+          <option value="Working Families" class="filter">Working Families</option>
+          <option value="Medical Freedom" class="filter">Medical Freedom</option>
+        </select>
+      <label for="endorsement">Amount of Endorsements</label>
+      <select name="endorsement" id="endorsement_select" class="filter">
+        <option value="No preference" class="filter">No preference</option>
+        <option value="5" class="filter">At least 5</option>
+        <option value="10" class="filter">At least 10</option>
+        <option value="25" class="filter">At least 25</option>
+        <option value="50" class="filter">At least 50</option>
+      </select>
+      </div>
+     
+      
+
+    </br></br></br></br></br></br>
+
+    <div style="float: left;">
+
+      <label for="issue">Major Platform Issues (each candidate will match with 0-3)</label><br>
+
+
+      <input type="checkbox" id="1" name="issue1" value="Asian Issues">
+      <label for="issue1" class="filter">Asian Issues</label>
+
+      <input type="checkbox" id="2" name="issue2" value="Criminal Justice Reform">
+      <label for="issue2" class="filter">Criminal Justice Reform</label>
+
+      <input type="checkbox" id="3" name="issue3" value="Criminal Justice/Public Safety">
+      <label for="issue3" class="filter">Criminal Justice/Public Safety</label></br>
+
+      <input type="checkbox" id="4" name="issue4" value="Economic Development">
+      <label for="issue4" class="filter">Economic Development</label>
+
+      <input type="checkbox" id="5" name="issue5" value="Education">
+      <label for="issue5" class="filter">Education</label>
+
+      <input type="checkbox" id="6" name="issue6" value="Energy">
+      <label for="issue6" class="filter">Energy</label><br>
+      
+      <input type="checkbox" id="7" name="issue7" value="Environment">
+      <label for="issue7" class="filter">Environment</label>
+
+      <input type="checkbox" id="8" name="issue8" value="Food Insecurity">
+      <label for="issue8" class="filter">Food Insecurity</label>
+
+      <input type="checkbox" id="9" name="issue9" value="Green Spaces">
+      <label for="issue9" class="filter">Green Spaces</label><br>
+      
+      <input type="checkbox" id="10" name="issue10" value="Gun Control">
+      <label for="issue10" class="filter">Gun Control</label>
+
+      <input type="checkbox" id="11" name="issue11" value="Healthcare">
+      <label for="issue11" class="filter">Healthcare</label>
+
+      <input type="checkbox" id="12" name="issue12" value="Housing">
+      <label for="issue12" class="filter">Housing</label><br>
+
+      <input type="checkbox" id="13" name="issue13" value="Internet Access">
+      <label for="issue13" class="filter">Internet Access</label>
+
+      <input type="checkbox" id="14" name="issue14" value="LGBTQ+ Issues">
+      <label for="issue14" class="filter">LGBTQ+ Issues</label>
+
+      <input type="checkbox" id="15" name="issue15" value="Medical Freedom">
+      <label for="issue15" class="filter">Medical Freedom</label><br>
+
+      <input type="checkbox" id="16" name="issue16" value="Racial Justice">
+      <label for="issue16" class="filter">Racial Justice</label>
+
+      <input type="checkbox" id="17" name="issue17" value="Small Business Protection">
+      <label for="issue17" class="filter">Small Business Protection</label>
+
+      <input type="checkbox" id="18" name="issue18" value="Transportation/Public Transit">
+      <label for="issue18" class="filter">Transportation/Public Transit</label><br>
+
+      <input type="checkbox" id="19" name="issue19" value="Veterans' Issues">
+      <label for="issue19" class="filter">Veterans' Issues</label>
+
+      <input type="checkbox" id="20" name="issue20" value="Waste/Sanitation">
+      <label for="issue20" class="filter">Waste/Sanitation</label>
+
+      <input type="checkbox" id="21" name="issue21" value="Women's Issues">
+      <label for="issue21" class="filter">Women's Issues</label><br>
+
+      <input type="checkbox" id="22" name="issue22" value="Worker Protections">
+      <label for="issue22" class="filter">Worker Protections</label>
+
+      <input type="checkbox" id="23" name="issue23" value="Youth Services">
+      <label for="issue23" class="filter">Youth Services</label>
+    
+      </br>
+      <input type="submit" value="Submit" class="filter">
+    </form>
+  </div>
+
+
+
+  </br></br></br></br>  </br></br></br></br>     </br></br></br>    </br></br></br></br></br></br></br></br></br>
+
+
+
+  <h3 style="text-align: center;">Candidates That Matched:</h3>
+
+  {% if valid0 %}
+    <div class="panel panel-warning">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Sorry, no candidates matched your criteria! Please try again.</div>
+      
+    </div>
+  {% endif %}
+  <div class="list-group" style="float: center;">
+  {% for opt in valid %}
+  <span class="border border-light"></span>
+
+    <a href="/candidates/{{opt}}" class="list-group-item">
+
+      <span class="badge bg-light text-dark">Endorsements: {{data[opt]['endorsements']|length}}</span>
+      <img class="rounded-circle" alt="avatar1" style="width: 80px; height: 80px;" src="{{data[opt]['image']}}" />
+      <span class="badge bg-success">{{data[opt]['issues'][0]}}</span>
+      <span class="badge bg-success">{{data[opt]['issues'][1]}}</span>
+      <span class="badge bg-success">{{data[opt]['issues'][2]}}</span>
+      <span class="badge bg-warning">{{data[opt]['ic']}}</span>
+
+      <span class="badge bg-light text-dark">District {{data[opt]['district']}}</span>
+
+      <span class="{{checktype[valid.index(opt)]}}">{{pil[valid.index(opt)]}}</span>
+
+
+      {{data[opt]['name']}}</a>
+      
+
+  {% endfor %}
+</div>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+  
+
+
+</body>
+
+<style>
+
+
+ 
+ 
+ 
+</style>
+<script>
+ 
+  document.getElementById('dist_select').innerHTML += "<option value='0'>No preference</option>"
+
+  for(let i=1; i<=51; i++){
+    var option = "<option value='" + i + "'>" + i + "</option>"
+    document.getElementById('dist_select').innerHTML += option;
+  }
+  
+
+  function returnChoices() {
+    distElement = document.querySelector('#dist_select');
+    partyElement = document.querySelector('#party_select');
+    endorsementElement=document.querySelector('#endorsement_select')
+    
+    issueElement=[]
+    
+    for(let i =1; i<24; i++){
+      if(document.getElementById(i).checked){
+        issueElement.push(document.getElementById(i).value)
+      }
+    }
+    output = [distElement.value, partyElement.value, issueElement, endorsementElement];
+    document.querySelector('.output').textContent = output;
+  }
+</script>
+
+<style>
+  {% for i in range(1,52) %}
+    .d{{i}}{
+      fill: #fffbc9
+    }
+    .a{{i}}{
+      fill: #495057
+    }
+  {% endfor %}
+</style>
+</html>
